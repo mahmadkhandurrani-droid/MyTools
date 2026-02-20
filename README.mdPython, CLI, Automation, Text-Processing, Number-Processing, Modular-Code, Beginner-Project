@@ -1,0 +1,93 @@
+# MyTools
+“Menu-driven Python application providing text and number utilities. Count vowels, reverse sentences, find prime numbers, and explore modular CLI programming with error handling.”
+print("Hello, World!")
+# number_utils.py
+
+def find_primes(start, end):
+    """Return list of prime numbers between start and end (inclusive)"""
+    primes = []
+    for num in range(start, end+1):
+        if num > 1:
+            for i in range(2, int(num**0.5)+1):
+                if num % i == 0:
+                    break
+            else:
+                primes.append(num)
+    return primes
+
+if __name__ == "__main__":
+    start = int(input("Enter start of range: "))
+    end = int(input("Enter end of range: "))
+    print("Prime numbers:", find_primes(start, end))
+
+print("Hello, World!")
+# text_utils.py
+import Number_utils  # import the prime module
+
+def count_vowels(text):
+    """Count total vowels in a string"""
+    return sum(1 for char in text.lower() if char in "aeiou")
+
+if __name__ == "__main__":
+    text = input("Enter text: ")
+    total_vowels = count_vowels(text)
+    print("Total vowels:", total_vowels)
+    print("Primes up to total vowels:", Number_utils.find_primes(1, total_vowels))
+
+print("Hello, World!")
+# word_utils.py
+import Text_utils
+import Number_utils
+
+def reverse_words(sentence):
+    """Reverse words in a sentence and count vowels"""
+    reversed_sentence = " ".join(sentence.split()[::-1])
+    total_vowels = Text_utils.count_vowels(sentence)
+    return reversed_sentence, total_vowels
+
+if __name__ == "__main__":
+    sentence = input("Enter a sentence: ")
+    rev, total_vowels = reverse_words(sentence)
+    print("Reversed sentence:", rev)
+    print("Total vowels:", total_vowels)
+    print("Primes up to total vowels:", Number_utils.find_primes(1, total_vowels))
+
+print("Hello, World!")
+# main.py
+import Text_utils
+import Word_utils
+import Number_utils
+
+while True:
+    print("\n--- MyTools Menu ---")
+    print("1. Count vowels")
+    print("2. Reverse sentence & count vowels")
+    print("3. Find prime numbers")
+    print("4. Exit")
+
+    choice = input("Choose (1-4): ")
+
+    if choice == "1":
+        text = input("Enter text: ")
+        total_v = Text_utils.count_vowels(text)
+        print("Total vowels:", total_v)
+        print("Primes up to total vowels:", Number_utils.find_primes(1, total_v))
+
+    elif choice == "2":
+        sentence = input("Enter sentence: ")
+        rev, total_v = Word_utils.reverse_words(sentence)
+        print("Reversed sentence:", rev)
+        print("Total vowels:", total_v)
+        print("Primes up to total vowels:", Number_utils.find_primes(1, total_v))
+
+    elif choice == "3":
+        start = int(input("Start of range: "))
+        end = int(input("End of range: "))
+        print("Prime numbers:", Number_utils.find_primes(start, end))
+
+    elif choice == "4":
+        print("Exiting...")
+        break
+
+    else:
+        print("Invalid choice!")
