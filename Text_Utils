@@ -1,0 +1,14 @@
+
+print("Hello, World!")
+# text_utils.py
+import Number_utils  # import the prime module
+
+def count_vowels(text):
+    """Count total vowels in a string"""
+    return sum(1 for char in text.lower() if char in "aeiou")
+
+if __name__ == "__main__":
+    text = input("Enter text: ")
+    total_vowels = count_vowels(text)
+    print("Total vowels:", total_vowels)
+    print("Primes up to total vowels:", Number_utils.find_primes(1, total_vowels))
