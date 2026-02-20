@@ -1,0 +1,18 @@
+
+print("Hello, World!")
+# word_utils.py
+import Text_utils
+import Number_utils
+
+def reverse_words(sentence):
+    """Reverse words in a sentence and count vowels"""
+    reversed_sentence = " ".join(sentence.split()[::-1])
+    total_vowels = Text_utils.count_vowels(sentence)
+    return reversed_sentence, total_vowels
+
+if __name__ == "__main__":
+    sentence = input("Enter a sentence: ")
+    rev, total_vowels = reverse_words(sentence)
+    print("Reversed sentence:", rev)
+    print("Total vowels:", total_vowels)
+    print("Primes up to total vowels:", Number_utils.find_primes(1, total_vowels))
